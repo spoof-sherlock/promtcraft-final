@@ -1,0 +1,74 @@
+Initial Prompt:
+
+go through PARTICIPANT_RULES.md and README.md. Then, go through all the files in the project and build context for my next prompts.
+
+Create a merge-crafting game, where players start with basic set of cards, each scored on some metrics; namely, music, art, design, and gameplay. The players must combine the elements to create newer, more interesting elements with unique properties. The goal of the game should be to create the element that represents the essence of creativity itself.
+
+GAMEPLAY:
+The player has four basic card slots that each have weak scores in a particular metric ( music, art, etc ). They will receive random cards with randomized scores one at a time, and they must merge their cards to combine them. The game ends if any of the cards in the four cards they have become negative.
+Merging items that have more "synergy" makes all their stats increase, while items that have less synergy get worse when they merge.
+Players get synergy hints, but cannot see the actual synergy stats of their cards.
+The game moves on infinitely, and when it ends the players are presented with a final score.
+
+Implementation:
+music1.mp3, music2.mp3, music3.mp3, and music4.mp3 is provided for game music.
+Please 4 create pixel art cards to use for the cards, each related to one of the metrics. Which art a card has will be decided by its highest metric.
+The only required controls should be my mouse.
+Make magical-themed pixel backgrounds to use for the game with the current card being shown close to the toip of the screen and th four cards on your board being in a line at the bottom.
+
+Give my some hyperparameters that I can tweak to modify game behaviour and difficulty.
+
+Debugging Prompts:
+
+1:
+Traceback (most recent call last):
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 758, in <module>
+Creativia()
+~~~~~~~~~^^
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 401, in init
+register_all_sprites()
+~~~~~~~~~~~~~~~~~~~~^^
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 216, in register_all_sprites
+put8(SPRITE_STAR_EMPTY_U, SPRITE_STAR_ROW, [
+~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"00500500",
+^^^^^^^^^^^
+...<6 lines>...
+"0000500 0"[:8],
+^^^^^^^^^^^^^^^^
+])
+^^
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 96, in put8
+img.set(u, v, rows)
+~~~~~~~^^^^^^^^^^^^
+ValueError: Invalid image data at row 5: expected 8 hexadecimal digits, got 7 - fix this error! the game doesn't run!
+
+
+2:
+Traceback (most recent call last):
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 758, in <module>
+Creativia()
+~~~~~~~~~^^
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 402, in init
+self._init_sfx()
+~~~~~~~~~~~~~~^^
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 427, in _init_sfx
+pyxel.sounds[4].set("c3e3g3c4e4g4c5", "p", "7654321", "n", 7)
+~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exception: Invalid sound note '5' - fix
+
+3:
+The game works, but the text 'click anywhere to start' is overlapping with other text. Fix this. Also, modify the game so that cards will increase one stat at the cost of another, so it is not so easy to win. Also, creativia is not something you can reach, the game should never have an end.
+
+4:
+There is a huge gap between the intructions and "click here to start" text. Move it up. Also, the game music doesn't stopwhen i lose. Increase the base stats a ittle bit so I don't immediately lose.
+
+5:
+Make a screen that shows the final points, and do not simply exit the game.
+
+6:
+Traceback (most recent call last):
+File "/home/spoof/pixelbox_starter/pixelbox_starter/main.py", line 475, in update
+elif self.state in (STATE_GAMEOVER, STATE_WIN):
+^^^^^^^^^
+NameError: name 'STATE_WIN' is not defined. Did you mean: 'STATE_MENU'?. fix this.
